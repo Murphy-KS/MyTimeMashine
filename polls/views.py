@@ -1,3 +1,9 @@
+import imp
+from django.http import HttpResponse
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Poll
+
+def index(request):
+    context = {'umfragen': Poll.objects.all()}
+    return render(request=request, template_name='polls/index.html', context=context)
